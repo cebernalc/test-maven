@@ -6,12 +6,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                def mvn_version = 'M3'
+                withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+                    sh 'mvn -B -DskipTests clean package'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                def mvn_version = 'M3'
+                withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
+                    sh 'mvn test'
+                }
             }
             post {
                 always {
