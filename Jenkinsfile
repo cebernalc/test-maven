@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh '/Users/cbernalc/Applications/apache-maven/bin/mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh '/Users/cbernalc/Applications/apache-maven/bin/mvn test'
             }
             post {
                 always {
